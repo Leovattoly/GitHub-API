@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="app/app.js"></script>
+	<title>find-gitter</title>
+</head>
+<body ng-app="app" ng-controller="gitHubDataController">
+
+	<header class="page-heading">
+<div class="container">
+<h1>Find git User </h1>
+<p>A simple application to finding the github users , using Angularjs</p>
+</header>
+
+<div align="center">
+	<input type="text" id="ghusername" ng-model="username" placeholder="Github username...">
+    <a href="#" id="ghsubmitbtn" ng-click="getGitInfo()">Tap Here</a>
+</div>
+
+<div ng-app="app" ng-controller="gitHubDataController" >
+<h1 align="center"> <span />{{userData.name}}</span></h1>
+<br>
+<img src="{{userData.avatar_url}}" height="100" width="100">
+<table>
+	<tr>
+	<td>Login <td>: <td> {{userData.login}}
+	</tr>
+	<tr>
+	<td>
+	</tr>
+</table>
+	<div class ="list-group-items" ng-repeat="repo in repositaryData | orderBy : '-updated_at'"  >
+	  <table border="3">
+	  	<tr>
+	  		<td><a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></td>
+	    </tr>
+	  	<tr>
+	  	<td>{{repo.description}}</td>
+	  	</tr>
+	  	<tr>
+	  	<td>Last Update: {{repo.updated_at | date : "dd/MM/yyyy"}}</td>
+	  	 </tr>
+	  </table>
+	  <br>
+	  <br>
+	  </div>
+	  <footer class="page-heading">
+	  <div class="container">
+	  <p align="center">
+	  LoVe CodInG With AngularJS
+	  </footer>
+
+</body>
+</html>
